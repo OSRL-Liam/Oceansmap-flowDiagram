@@ -1,11 +1,12 @@
-# Oceansmap Process Checklist
+# Oceansmap Process Checklist (Styled Version)
 
-This is a simple browser-based aide memoire for oil spill modellers.
+This is a styled browser-based aide memoire for oil spill modellers.
 
 ## Features
-- Interactive flow diagram (using Mermaid.js)
-- Checklist to tick off steps
+- Interactive flow diagram (using Mermaid.js, forest theme)
+- Styled checklist with hover effects and strikethrough on completion
 - Progress saved in local browser storage
+- Responsive layout for better readability
 
 ## Hosting
 1. Push this repo to GitHub.
