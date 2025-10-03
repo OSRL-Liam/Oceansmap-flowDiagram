@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oceansmap Process Checklist</title>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .checklist {
+      margin-bottom: 20px;
+    }
+    .step {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Run Oceansmap Process</h1>
+
+  <!-- Mermaid Diagram -->
+  <div class="mermaid">
+    flowchart TD
+      A[Receive Spill Info] --> B[Set Computer Clock]
+      B --> C[Create Virtual Station]
+      C --> D[Get Temp & Salinity]
+      D --> E[Choose Metocean Datasets]
+      E --> F[Find Oil Match]
+      F --> G[Setup and Run Scenario]
+      G --> H[Stylise Visuals]
+      H --> I[Create Outputs]
+      I --> J[Save Full Zipped Scenario]
+      J --> K[Send to Customer]
+      K --> L[Done]
+  </div>
+
+  <h2>Checklist</h2>
+  <div id="checklist"></div>
+
+  <script>
+    const steps = [
+      "Receive Spill Info",
+      "Set Computer Clock",
+      "Create Virtual Station",
+      "Get Temp & Salinity",
+      "Choose Metocean Datasets",
+      "Find Oil Match",
+      "Setup and Run Scenario",
+      "Stylise Visuals",
+      "Create Outputs",
+      "Save Full Zipped Scenario",
+      "Send to Customer",
+      "Done"
+    ];
+
+    const checklistDiv = document.getElementById("checklist");
+
+    steps.forEach((step, index) => {
+      const div = document.createElement("div");
+      div.className = "step";
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.id = "step-" + index;
+      checkbox.checked = localStorage.getItem("step-" + index) === "true";
+      checkbox.addEventListener("change", (e) => {
+        localStorage.setItem("step-" + index, e.target.checked);
+      });
+      const label = document.createElement("label");
+      label.htmlFor = "step-" + index;
+      label.textContent = step;
+      div.appendChild(checkbox);
+      div.appendChild(label);
+      checklistDiv.appendChild(div);
+    });
+  </script>
+</body>
+</html>
